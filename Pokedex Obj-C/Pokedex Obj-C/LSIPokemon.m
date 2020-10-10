@@ -8,20 +8,17 @@
 #import "LSIPokemon.h"
 
 //MARK: - Interface -
-@interface LSIPokemon (NSKeyValueCoding)
-
-
+@interface LSIPokemon ()
 
 @end
 
 //MARK: - Implementation -
 @implementation LSIPokemon
 
-- (instancetype)initWithName:(NSString *)name identifier:(NSNumber *)identifier spriteURL:(NSURL *)spriteURL {
+- (instancetype)initWithName:(NSString *)name dataURL:(nonnull NSURL *)dataURL{
     if (self = [super init]) {
         _name = name;
-        _identifier = identifier;
-        _spriteURL = spriteURL;
+        _dataURL = dataURL;
         _abilities = [[NSMutableArray alloc] initWithArray:@[]];
     }
     return self;
