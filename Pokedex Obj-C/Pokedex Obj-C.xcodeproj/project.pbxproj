@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B7CE48A25316A6D001B8531 /* LSIPokemonListing.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CE48925316A6D001B8531 /* LSIPokemonListing.m */; };
+		7B7CE49125316B65001B8531 /* LSIPokemonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CE49025316B65001B8531 /* LSIPokemonTableViewCell.m */; };
 		7B840D31253140CB00FFD510 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B840D30253140CB00FFD510 /* AppDelegate.m */; };
 		7B840D34253140CB00FFD510 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B840D33253140CB00FFD510 /* SceneDelegate.m */; };
 		7B840D37253140CB00FFD510 /* LSIPokemonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B840D36253140CB00FFD510 /* LSIPokemonDetailViewController.m */; };
@@ -20,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B7CE48825316A6D001B8531 /* LSIPokemonListing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSIPokemonListing.h; sourceTree = "<group>"; };
+		7B7CE48925316A6D001B8531 /* LSIPokemonListing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSIPokemonListing.m; sourceTree = "<group>"; };
+		7B7CE48F25316B65001B8531 /* LSIPokemonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSIPokemonTableViewCell.h; sourceTree = "<group>"; };
+		7B7CE49025316B65001B8531 /* LSIPokemonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSIPokemonTableViewCell.m; sourceTree = "<group>"; };
 		7B840D2C253140CB00FFD510 /* Pokedex Obj-C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pokedex Obj-C.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B840D2F253140CB00FFD510 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7B840D30253140CB00FFD510 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,6 +57,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B7CE48725316A4C001B8531 /* Pokemon Listing */ = {
+			isa = PBXGroup;
+			children = (
+				7B7CE48825316A6D001B8531 /* LSIPokemonListing.h */,
+				7B7CE48925316A6D001B8531 /* LSIPokemonListing.m */,
+			);
+			name = "Pokemon Listing";
+			sourceTree = "<group>";
+		};
+		7B7CE48D25316B27001B8531 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7B7CE48E25316B31001B8531 /* PokemonTableViewCell */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		7B7CE48E25316B31001B8531 /* PokemonTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7B7CE48F25316B65001B8531 /* LSIPokemonTableViewCell.h */,
+				7B7CE49025316B65001B8531 /* LSIPokemonTableViewCell.m */,
+			);
+			name = PokemonTableViewCell;
+			sourceTree = "<group>";
+		};
 		7B840D23253140CB00FFD510 = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +105,7 @@
 				7B840D49253140E300FFD510 /* Other */,
 				7B840D4A253140EB00FFD510 /* Models */,
 				7B840D4B253140F500FFD510 /* Networking */,
+				7B7CE48D25316B27001B8531 /* Views */,
 				7B840D4D2531410600FFD510 /* View Controllers */,
 				7B840D562531427E00FFD510 /* Storyboards */,
 				7B840D40253140CE00FFD510 /* Info.plist */,
@@ -96,6 +129,7 @@
 		7B840D4A253140EB00FFD510 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7B7CE48725316A4C001B8531 /* Pokemon Listing */,
 				7B840D5B2531434000FFD510 /* Pokemon */,
 			);
 			name = Models;
@@ -104,8 +138,8 @@
 		7B840D4B253140F500FFD510 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				7B840D612531438400FFD510 /* Pokedex Obj-C-Bridging-Header.h */,
 				7B840D622531438400FFD510 /* PokemonAPI.swift */,
+				7B840D612531438400FFD510 /* Pokedex Obj-C-Bridging-Header.h */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -226,7 +260,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B7CE49125316B65001B8531 /* LSIPokemonTableViewCell.m in Sources */,
 				7B840D37253140CB00FFD510 /* LSIPokemonDetailViewController.m in Sources */,
+				7B7CE48A25316A6D001B8531 /* LSIPokemonListing.m in Sources */,
 				7B840D59253142BC00FFD510 /* LSIPokedexTableViewController.m in Sources */,
 				7B840D31253140CB00FFD510 /* AppDelegate.m in Sources */,
 				7B840D632531438400FFD510 /* PokemonAPI.swift in Sources */,

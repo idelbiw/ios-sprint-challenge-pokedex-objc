@@ -11,12 +11,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LSIPokemon : NSObject
 
-@property (nonatomic) NSString *name;
-@property (nonatomic) int identifier;
-@property (nonatomic) NSMutableArray<NSString *> *abilities;
-@property (nonatomic) NSURL *spriteURL;
+@property (nonatomic, nonnull) NSString *name;
+@property (nonatomic, nonnull) NSNumber *identifier;
+@property (nonatomic, nonnull) NSMutableArray<NSString *> *abilities;
+@property (nonatomic, nonnull) NSURL *spriteURL;
 
-- (instancetype)initWithName:(NSString *)name identifier:(int)identifier spriteURL:(NSURL *)spriteURL;
+- (instancetype)initWithName:(NSString *)name identifier:(NSNumber *)identifier spriteURL:(NSURL *)spriteURL;
 
 @end
 
