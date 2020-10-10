@@ -8,9 +8,10 @@
 #import "LSIPokedexTableViewController.h"
 #import "LSIPokemonListing.h"
 
-
 //MARK: - Interface -
 @interface LSIPokedexTableViewController ()
+
+- (void)fetchPokemon;
 
 @end
 
@@ -20,6 +21,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self fetchPokemon];
+    
+}
+
+- (void)fetchPokemon {
+    
+    [PokemonAPI.sharedController fetchAllPokemonWithCompletion:^(NSArray<LSIPokemon *> * _Nullable, NSError * _Nullable) {
+        
+    }];
     
 }
 

@@ -6,12 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Pokedex_Obj_C-Swift.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LSIPokedexTableViewController : UITableViewController
 
-
+@property (nonatomic, nonnull) PokemonAPI *apiController;
 
 @end
 
