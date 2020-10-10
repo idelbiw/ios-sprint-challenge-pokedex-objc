@@ -57,6 +57,23 @@ class PokemonAPI: NSObject {
 
     @objc func fillInDetails(for pokemon: LSIPokemon) {
         
+        var request = URLRequest(url: pokemon.dataURL)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            
+            if let error = error {
+                print("ERROR: Could not complete individual pokemon data network request, reason: \(error)")
+                return
+            }
+            guard let data = data else {
+                print("ERROR: Data not found! Reason: \(error)")
+                return
+            }
+            
+            
+        }
+        
     }
     
     
