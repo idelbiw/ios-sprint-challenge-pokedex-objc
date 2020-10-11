@@ -57,13 +57,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7B7CE48725316A4C001B8531 /* Pokemon Listing */ = {
+		7B7CE48725316A4C001B8531 /* Pokemon Listing - UNUSED */ = {
 			isa = PBXGroup;
 			children = (
 				7B7CE48825316A6D001B8531 /* LSIPokemonListing.h */,
 				7B7CE48925316A6D001B8531 /* LSIPokemonListing.m */,
 			);
-			name = "Pokemon Listing";
+			name = "Pokemon Listing - UNUSED";
 			sourceTree = "<group>";
 		};
 		7B7CE48D25316B27001B8531 /* Views */ = {
@@ -129,7 +129,7 @@
 		7B840D4A253140EB00FFD510 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7B7CE48725316A4C001B8531 /* Pokemon Listing */,
+				7B7CE48725316A4C001B8531 /* Pokemon Listing - UNUSED */,
 				7B840D5B2531434000FFD510 /* Pokemon */,
 			);
 			name = Models;

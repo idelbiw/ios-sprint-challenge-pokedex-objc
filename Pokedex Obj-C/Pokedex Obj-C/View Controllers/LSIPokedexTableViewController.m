@@ -27,7 +27,9 @@
 
 - (void)fetchPokemon {
     
-    [PokemonAPI.sharedController fetchAllPokemonWithCompletion:^(NSArray<LSIPokemon *> * _Nullable, NSError * _Nullable) {
+    [PokemonAPI.sharedController fetchAllPokemonWithCompletion:^(NSArray<LSIPokemon *> *_Nullable pokemonArray, NSError *_Nullable error) {
+        
+        NSLog(@"this is to test stuff");
         
     }];
     

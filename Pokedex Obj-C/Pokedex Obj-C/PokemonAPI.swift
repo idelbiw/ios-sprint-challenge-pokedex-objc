@@ -16,10 +16,8 @@ class PokemonAPI: NSObject {
     /// Methods
     @objc func fetchAllPokemon(completion: @escaping ([LSIPokemon]?, Error?) -> Void) {
         
-        var request = URLRequest(url: pokemonListURL)
-        request.httpMethod = "GET"
-        
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
+        URLSession.shared.dataTask(with: pokemonListURL) { (data, _, error) in
+            
             if let error = error {
                 print("ERROR: There was an error completing the pokemon list network request, reason: \(error)")
                 completion(nil, error)
@@ -38,7 +36,8 @@ class PokemonAPI: NSObject {
                 
                 for dictionary in resultsArray {
                     let pokemonName = dictionary["name"] as! String
-                    let pokemonURL = dictionary["url"] as! URL
+                    let urlString = dictionary["url"] as! String
+                    let pokemonURL = URL(string: urlString)!
                     let pokemon = LSIPokemon(name: pokemonName, dataURL: pokemonURL)
                     pokemonArray.append(pokemon)
                 }
@@ -50,9 +49,7 @@ class PokemonAPI: NSObject {
                 completion(nil, error)
                 return
             }
-            
-        }
-        
+        } .resume()
     }
 
     @objc func fillInDetails(for pokemon: LSIPokemon) {
@@ -67,15 +64,40 @@ class PokemonAPI: NSObject {
                 return
             }
             guard let data = data else {
-                print("ERROR: Data not found! Reason: \(error)")
+                print("ERROR: Data not found! Reason: \(String(describing: error))")
                 return
             }
             
-            
-        }
+            do {
+                //getting to the right level of each dictionary - (for abilities it's a bit deeper than this)
+                let dictionary: [String : Any] = try JSONSerialization.jsonObject(with: data) as! Dictionary
+                let spritesDictionary: [String : Any] = dictionary["sprites"] as! Dictionary
+                let abilitiesDictionaryArray: [[String : Any]] = dictionary["abilities"] as! Array
+               
+                // grabbing the ability's name through multiple layers of dictionaries
+                var abilitiesArray: [String] = []
+                for topLevelAbilityDictionary in abilitiesDictionaryArray {
+                    let abilityDictionary: [String : Any] = topLevelAbilityDictionary["ability"] as! Dictionary
+                    let abilityName = abilityDictionary["name"] as! String
+                    abilitiesArray.append(abilityName)
+                }
+                
+                //grabbing the values from the dictionaries above
+                let spriteURL = URL(string: spritesDictionary["front_default"] as! String)!
+                let identifier: Int = dictionary["id"] as! Int
+                
+                pokemon.abilities = NSMutableArray(arrayLiteral: abilitiesArray)
+                pokemon.identifier = NSNumber(value: identifier)
+                pokemon.spriteURL = spriteURL
+                
+            } catch {
+                print("ERROR: Could not assign missing values for the pokemon in the FillInDetails method in the PokemonAPI file, reason: \(error)")
+                return
+            }
+        }.resume()
         
     }
     
     
     
-}
+} //End of class
