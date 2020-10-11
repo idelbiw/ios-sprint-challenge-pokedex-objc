@@ -75,20 +75,20 @@ class PokemonAPI: NSObject {
                 let abilitiesDictionaryArray: [[String : Any]] = dictionary["abilities"] as! Array
                
                 // grabbing the ability's name through multiple layers of dictionaries
-                var abilitiesArray: [String] = []
+                var indexCounter: Int32 = -1
                 for topLevelAbilityDictionary in abilitiesDictionaryArray {
+                    indexCounter += 1
                     let abilityDictionary: [String : Any] = topLevelAbilityDictionary["ability"] as! Dictionary
                     let abilityName = abilityDictionary["name"] as! String
-                    abilitiesArray.append(abilityName)
+                    pokemon.insertObject(abilityName, inAbilitiesAt: indexCounter)
                 }
                 
                 //grabbing the values from the dictionaries above
                 let spriteURL = URL(string: spritesDictionary["front_default"] as! String)!
                 let identifier: Int = dictionary["id"] as! Int
                 
-                pokemon.abilities = NSMutableArray(arrayLiteral: abilitiesArray)
-                pokemon.identifier = NSNumber(value: identifier)
-                pokemon.spriteURL = spriteURL
+                pokemon.setValue(NSNumber(value: identifier), forKey: "identifier")
+                pokemon.setValue(spriteURL, forKey: "spriteURL")
                 
             } catch {
                 print("ERROR: Could not assign missing values for the pokemon in the FillInDetails method in the PokemonAPI file, reason: \(error)")

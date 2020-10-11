@@ -22,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self fetchPokemon];
-    
 }
 
 - (void)fetchPokemon {
@@ -51,7 +50,14 @@
 
 // Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+    if ([segue.identifier isEqualToString:@"PokemonDetailViewSegue"]) {
+        
+        LSIPokemonDetailViewController *detailVC = segue.destinationViewController;
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        LSIPokemon *pokemon = self.pokemonArray[indexPath.row];
+        detailVC.pokemon = pokemon;
+
+    }
 }
 
 @end

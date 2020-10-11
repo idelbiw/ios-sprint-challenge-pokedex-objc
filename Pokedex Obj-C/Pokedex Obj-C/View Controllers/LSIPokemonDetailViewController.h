@@ -6,9 +6,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LSIPokemon.h"
+#import "Pokedex_Obj_C-Swift.h"
 
 @interface LSIPokemonDetailViewController : UIViewController
 
+@property LSIPokemon *pokemon;
 
 @end
 

@@ -24,4 +24,21 @@
     return self;
 }
 
+/// KVO Compliance methods for Array
+- (NSUInteger)countOfAbilities {
+    return _abilities.count;
+}
+
+- (id)objectInAbilitiesAtIndex:(NSUInteger)index {
+    return _abilities[index];
+}
+
+- (void)insertObject:(NSString *)object inAbilitiesAtIndex:(int)index {
+    [_abilities insertObject:object atIndex:index];
+}
+
+- (void)removeObjectFromAbilitiesAtIndex:(int)index {
+    [_abilities removeObjectAtIndex:index];
+}
+
 @end

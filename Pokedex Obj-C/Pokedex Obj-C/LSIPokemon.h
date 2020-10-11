@@ -19,6 +19,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithName:(NSString *)name dataURL:(NSURL *)dataURL;
 
+- (NSUInteger)countOfAbilities;
+- (id)objectInAbilitiesAtIndex:(NSUInteger)index;
+- (void)insertObject:(NSString *)object inAbilitiesAtIndex:(int)index;
+- (void)removeObjectFromAbilitiesAtIndex:(int)index;
+
 @end
 
 NS_ASSUME_NONNULL_END
