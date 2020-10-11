@@ -11,7 +11,7 @@ class PokemonAPI: NSObject {
 
     /// Properties
     @objc(sharedController) static let shared = PokemonAPI()
-    let pokemonListURL = URL(string: "https://pokeapi.co/api/v2/pokemon/")!
+    let pokemonListURL = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=200&offset=200")!
     
     /// Methods
     @objc func fetchAllPokemon(completion: @escaping ([LSIPokemon]?, Error?) -> Void) {
