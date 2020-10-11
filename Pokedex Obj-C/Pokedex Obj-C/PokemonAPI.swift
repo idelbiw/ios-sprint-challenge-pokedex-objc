@@ -98,6 +98,4 @@ class PokemonAPI: NSObject {
         
     }
     
-    
-    
 } //End of class

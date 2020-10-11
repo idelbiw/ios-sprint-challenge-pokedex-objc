@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *thirdAbilityLabel;
 
 - (void)fetchPokemonDetails;
-- (NSData *)fetchImage;
+- (void)fetchImage;
 
 @end
 
@@ -36,9 +36,26 @@
     [self fetchPokemonDetails];
 }
 
-- (NSData *)fetchImage {
+- (void)fetchImage {
+    [[NSURLSession.sharedSession dataTaskWithURL:_pokemon.spriteURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        if (error) {
+            NSLog(@"ERROR: Error occured while fetching pokemon image, reason: %@", error);
+            return;
+        }
+        if (!data) {
+            NSLog(@"ERROR: Data not found while requesting pokemon image, reason: %@", error);
+            return;
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIImage *image = [[UIImage alloc] initWithData:data];
+            self->_imageView.image = image;
+        });
+        
+    }]resume];
     
-    return nil;
+    return;
 }
 
 - (void)fetchPokemonDetails {
@@ -50,7 +67,7 @@
     
     if ([keyPath isEqualToString:@"spriteURL"]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            // Handle fetching and setting image here
+            [self fetchImage];
         });
     }
     
