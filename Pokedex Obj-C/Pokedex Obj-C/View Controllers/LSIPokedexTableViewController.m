@@ -6,12 +6,12 @@
 //
 
 #import "LSIPokedexTableViewController.h"
-#import "LSIPokemonListing.h"
 
 //MARK: - Interface -
 @interface LSIPokedexTableViewController ()
 
-- (void)fetchPokemon;
+    @property NSArray<LSIPokemon *> *pokemonArray;
+    - (void)fetchPokemon;
 
 @end
 
@@ -26,25 +26,26 @@
 }
 
 - (void)fetchPokemon {
-    
     [PokemonAPI.sharedController fetchAllPokemonWithCompletion:^(NSArray<LSIPokemon *> *_Nullable pokemonArray, NSError *_Nullable error) {
         
-        NSLog(@"this is to test stuff");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self->_pokemonArray = pokemonArray;
+            [self.tableView reloadData];
+        });
         
     }];
-    
 }
 
 // Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return _pokemonArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PokemonCell" forIndexPath:indexPath];
     
-    // Configure the cell...
-    
+    LSIPokemon *pokemon = self.pokemonArray[indexPath.row];
+    cell.textLabel.text = pokemon.name;
     return cell;
 }
 
